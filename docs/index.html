@@ -27,12 +27,6 @@ input {
     This page contains javascript content,
     please enable javascript in your browser.
   </noscript>
-  <div id="header">
-    <form id="boot-form">
-      <input id="boot-src" type="text" size="72" />
-      <input id="boot" type="submit" value="Boot" />
-    </form>
-  </div>
   <div id="memory">
     <h3>Memory</h3>
     <table>
@@ -365,20 +359,7 @@ input {
     <h3>Registers</h3>
     <table>
       <tr>
-        <th><code>t</code></th>
-        <th><code>x</code></th>
-        <th><code>y</code></th>
-        <th><code>z</code></th>
-      </tr>
-      <tr>
-        <td><input id="reg_t" size="2" value="00" /></td>
-        <td><input id="reg_x" size="2" value="00" /></td>
-        <td><input id="reg_y" size="2" value="00" /></td>
-        <td><input id="reg_z" size="2" value="00" /></td>
-      </tr>
-    </table>
-    <table>
-      <tr>
+        <th>&nbsp;</th>
         <th><code>t</code></th>
         <td><input id="reg_t" size="2" value="00" /></td>
         <th>&nbsp;</th>
@@ -395,19 +376,9 @@ input {
   </div>
   <div id="monitor">
     <div id="controls">
-      <button id="revert-btn">Revert</button>
-      <div id="fault-ctl" title="ready">
-        <svg width="36" height="36" viewBox="-18 -18 36 36">
-          <g stroke-width="1">
-            <circle id="fault-led" cx="0" cy="0" r="5" fill="#FF3" stroke="#990"></circle>
-          </g>
-        </svg>
-      </div>
-      <button id="play-pause"></button>
+      <button id="play-pause">Play</button>
       <input type="range" id="play-interval" min="0" max="1000" value="0">
-      <button id="next-step">Next</button>
       <button id="single-step">Step</button>
-      <button id="gc-btn">GC</button>
     </div>
     <table border="1">
       <tr>
