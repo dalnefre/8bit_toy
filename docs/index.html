@@ -7,7 +7,7 @@
 body {
   position: absolute;
   margin: 0;
-  padding: 0;
+  padding: 1em;
   display: flex;
   flex-direction: column;
 }
@@ -16,6 +16,9 @@ pre {
 }
 table {
   margin: 1ex;
+}
+input {
+  font-family: fixed;
 }
 </style>
 </head>
@@ -34,7 +37,7 @@ table {
   <div id="memory">
     <table>
       <tr>
-        <th>RAM</th>
+        <th></th>
         <th><code>_0</code></th>
         <th><code>_1</code></th>
         <th><code>_2</code></th>
@@ -54,41 +57,79 @@ table {
       </tr>
       <tr>
         <th><code>0_</code></th>
-        <td><code><input id="mem00" size="2" value="00" /></code></td>
-        <td><code><input id="mem01" size="2" value="00" /></code></td>
-        <td><code><input id="mem02" size="2" value="00" /></code></td>
-        <td><code><input id="mem03" size="2" value="00" /></code></td>
-        <td><code><input id="mem04" size="2" value="00" /></code></td>
-        <td><code><input id="mem05" size="2" value="00" /></code></td>
-        <td><code><input id="mem06" size="2" value="00" /></code></td>
-        <td><code><input id="mem07" size="2" value="00" /></code></td>
-        <td><code><input id="mem08" size="2" value="00" /></code></td>
-        <td><code><input id="mem09" size="2" value="00" /></code></td>
-        <td><code><input id="mem0A" size="2" value="00" /></code></td>
-        <td><code><input id="mem0B" size="2" value="00" /></code></td>
-        <td><code><input id="mem0C" size="2" value="00" /></code></td>
-        <td><code><input id="mem0D" size="2" value="00" /></code></td>
-        <td><code><input id="mem0E" size="2" value="00" /></code></td>
-        <td><code><input id="mem0F" size="2" value="00" /></code></td>
+        <td><input id="mem00" size="2" value="00" /></td>
+        <td><input id="mem01" size="2" value="00" /></td>
+        <td><input id="mem02" size="2" value="00" /></td>
+        <td><input id="mem03" size="2" value="00" /></td>
+        <td><input id="mem04" size="2" value="00" /></td>
+        <td><input id="mem05" size="2" value="00" /></td>
+        <td><input id="mem06" size="2" value="00" /></td>
+        <td><input id="mem07" size="2" value="00" /></td>
+        <td><input id="mem08" size="2" value="00" /></td>
+        <td><input id="mem09" size="2" value="00" /></td>
+        <td><input id="mem0A" size="2" value="00" /></td>
+        <td><input id="mem0B" size="2" value="00" /></td>
+        <td><input id="mem0C" size="2" value="00" /></td>
+        <td><input id="mem0D" size="2" value="00" /></td>
+        <td><input id="mem0E" size="2" value="00" /></td>
+        <td><input id="mem0F" size="2" value="00" /></td>
       </tr>
       <tr>
-        <th><code>0_</code></th>
-        <td><code><input id="mem10" size="2" value="00" /></code></td>
-        <td><code><input id="mem11" size="2" value="00" /></code></td>
-        <td><code><input id="mem12" size="2" value="00" /></code></td>
-        <td><code><input id="mem13" size="2" value="00" /></code></td>
-        <td><code><input id="mem14" size="2" value="00" /></code></td>
-        <td><code><input id="mem15" size="2" value="00" /></code></td>
-        <td><code><input id="mem16" size="2" value="00" /></code></td>
-        <td><code><input id="mem17" size="2" value="00" /></code></td>
-        <td><code><input id="mem18" size="2" value="00" /></code></td>
-        <td><code><input id="mem19" size="2" value="00" /></code></td>
-        <td><code><input id="mem1A" size="2" value="00" /></code></td>
-        <td><code><input id="mem1B" size="2" value="00" /></code></td>
-        <td><code><input id="mem1C" size="2" value="00" /></code></td>
-        <td><code><input id="mem1D" size="2" value="00" /></code></td>
-        <td><code><input id="mem1E" size="2" value="00" /></code></td>
-        <td><code><input id="mem1F" size="2" value="00" /></code></td>
+        <th><code>1_</code></th>
+        <td><input id="mem10" size="2" value="00" /></td>
+        <td><input id="mem11" size="2" value="00" /></td>
+        <td><input id="mem12" size="2" value="00" /></td>
+        <td><input id="mem13" size="2" value="00" /></td>
+        <td><input id="mem14" size="2" value="00" /></td>
+        <td><input id="mem15" size="2" value="00" /></td>
+        <td><input id="mem16" size="2" value="00" /></td>
+        <td><input id="mem17" size="2" value="00" /></td>
+        <td><input id="mem18" size="2" value="00" /></td>
+        <td><input id="mem19" size="2" value="00" /></td>
+        <td><input id="mem1A" size="2" value="00" /></td>
+        <td><input id="mem1B" size="2" value="00" /></td>
+        <td><input id="mem1C" size="2" value="00" /></td>
+        <td><input id="mem1D" size="2" value="00" /></td>
+        <td><input id="mem1E" size="2" value="00" /></td>
+        <td><input id="mem1F" size="2" value="00" /></td>
+      </tr>
+      <tr>
+        <th><code>2_</code></th>
+        <td><input id="mem20" size="2" value="00" /></td>
+        <td><input id="mem21" size="2" value="00" /></td>
+        <td><input id="mem22" size="2" value="00" /></td>
+        <td><input id="mem23" size="2" value="00" /></td>
+        <td><input id="mem24" size="2" value="00" /></td>
+        <td><input id="mem25" size="2" value="00" /></td>
+        <td><input id="mem26" size="2" value="00" /></td>
+        <td><input id="mem27" size="2" value="00" /></td>
+        <td><input id="mem28" size="2" value="00" /></td>
+        <td><input id="mem29" size="2" value="00" /></td>
+        <td><input id="mem2A" size="2" value="00" /></td>
+        <td><input id="mem2B" size="2" value="00" /></td>
+        <td><input id="mem2C" size="2" value="00" /></td>
+        <td><input id="mem2D" size="2" value="00" /></td>
+        <td><input id="mem2E" size="2" value="00" /></td>
+        <td><input id="mem2F" size="2" value="00" /></td>
+      </tr>
+      <tr>
+        <th><code>3_</code></th>
+        <td><input id="mem30" size="2" value="00" /></td>
+        <td><input id="mem31" size="2" value="00" /></td>
+        <td><input id="mem32" size="2" value="00" /></td>
+        <td><input id="mem33" size="2" value="00" /></td>
+        <td><input id="mem34" size="2" value="00" /></td>
+        <td><input id="mem35" size="2" value="00" /></td>
+        <td><input id="mem36" size="2" value="00" /></td>
+        <td><input id="mem37" size="2" value="00" /></td>
+        <td><input id="mem38" size="2" value="00" /></td>
+        <td><input id="mem39" size="2" value="00" /></td>
+        <td><input id="mem3A" size="2" value="00" /></td>
+        <td><input id="mem3B" size="2" value="00" /></td>
+        <td><input id="mem3C" size="2" value="00" /></td>
+        <td><input id="mem3D" size="2" value="00" /></td>
+        <td><input id="mem3E" size="2" value="00" /></td>
+        <td><input id="mem3F" size="2" value="00" /></td>
       </tr>
     </table>
   </div>
