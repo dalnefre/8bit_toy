@@ -11,6 +11,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+h1, h2, h3, h4 {
+  font-family: sans-serif;
+}
 pre {
   margin: 2px;
 }
@@ -27,8 +30,11 @@ input {
     This page contains javascript content,
     please enable javascript in your browser.
   </noscript>
+  <div id="header">
+    <h1>8bit_toy Learning Simulator</h1>
+  </div>
   <div id="memory">
-    <h3>Memory</h3>
+    <h2>Memory</h2>
     <table>
       <tr>
         <th></th>
@@ -356,7 +362,7 @@ input {
     </table>
   </div>
   <div id="registers">
-    <h3>Registers</h3>
+    <h2>Registers</h2>
     <table>
       <tr>
         <th>&nbsp;</th>
