@@ -26,10 +26,51 @@ function mem(addr) {
     return document.getElementById(id);
 }
 
+// locate DOM element representing register
+function reg(r) {
+    switch (r & 0x3) {
+        case 0x1: return $reg_x;
+        case 0x2: return $reg_y;
+        case 0x3: return $reg_z;
+        default: return $reg_t;
+    }
+}
+
 // execute the instruction @ip
 function single_step() {
     const ip = hex2num($reg_ip.value);
     const instr = hex2num(mem(ip).value);
     alert("execute instruction @" + num2hex(ip) + " → " + num2hex(instr));
+    $reg_ip.value = num2hex(ip + 1);  // increment ip
+    let r = (instr & 0x0C) >> 2;
+    let s = (instr & 0x03);
+    switch (instr & 0xF0) {
+        case 0x00: {  // cp
+        }
+        case 0x10: {  // nor
+        }
+        case 0x20: {  // sub
+        }
+        case 0x30: {  // rol, lsl, lsr, asr
+        }
+        case 0x40: {  // ld
+        }
+        case 0x50: {  // st
+        }
+        case 0x60: {  // jnz
+        }
+        case 0x70: {  // jsr
+        }
+        default: {  // lo, hi
+            r = (instr & 0x30) >> 8;
+            const d = (instr & 0x0F);
+            const el = reg(r);
+            if (instr & 0xC0 === 0x80) {  // lo
+                el.value = num2hex((hex2num(el.value) & 0xF0) | d);
+            } else {  // hi
+                el.value = num2hex((hex2num(el.value) & 0x0F) | (d << 4));
+            }
+        }
+    }
 }
 $single_step.onclick = single_step;
