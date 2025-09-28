@@ -40,43 +40,51 @@ function reg(r) {
 function single_step() {
     const ip = hex2num($reg_ip.value);
     const instr = hex2num(mem(ip).value);
-    alert("execute instruction @" + num2hex(ip) + " → " + num2hex(instr));
     $reg_ip.value = num2hex(ip + 1);  // increment ip
     let r = (instr & 0x0C) >> 2;
     let s = (instr & 0x03);
     switch (instr & 0xF0) {
         case 0x00: {  // cp
             reg(r).value = reg(s).value;
+            break;
         }
         case 0x10: {  // nor
             const v = hex2num(reg(r).value);
             const w = hex2num(reg(s).value);
             reg(r).value = num2hex(~(v | w));
+            break;
         }
         case 0x20: {  // sub
             const v = hex2num(reg(r).value);
             const w = hex2num(reg(s).value);
             reg(r).value = num2hex(v - w);
+            break;
         }
         case 0x30: {  // rol, lsl, lsr, asr
+            break;
         }
         case 0x40: {  // ld
+            break;
         }
         case 0x50: {  // st
+            break;
         }
         case 0x60: {  // jnz
+            break;
         }
         case 0x70: {  // jsr
+            break;
         }
         default: {  // lo, hi
             r = (instr & 0x30) >> 4;
             const d = (instr & 0x0F);
             const el = reg(r);
-            if (instr & 0xC0 === 0x80) {  // lo
+            if ((instr & 0xC0) === 0x80) {  // lo
                 el.value = num2hex((hex2num(el.value) & 0xF0) | d);
             } else {  // hi
                 el.value = num2hex((hex2num(el.value) & 0x0F) | (d << 4));
             }
+            break;
         }
     }
 }
