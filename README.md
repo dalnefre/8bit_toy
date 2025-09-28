@@ -5,7 +5,7 @@ A learning simulator for a toy 8-bit CPU featuring:
   * 8-bit data
   * 8-bit addresses
   * 8-bit instructions
-  * 4 registers (`00`= t, `01`= x, `10`= y, `11`= z )
+  * 4 registers for calculations
 
 The current version of the simulator is hosted at
 [https://dalnefre.github.io/8bit_toy/](https://dalnefre.github.io/8bit_toy/)
@@ -28,7 +28,18 @@ The _Step_ button executes the instruction
 at the address held by instruction pointer (`ip`)
 and updates the machine state accordingly.
 
-## Opcodes
+## Instructions
+
+Machine instructions each occupy one 8-bit byte.
+The tables below express the instructions in binary,
+like this `hhhh_llll`,
+where `hhhh` is the high 4-bit nybble
+and `llll` is the low 4-bit nybble.
+Each nybble corresponds to one hex digit.
+Registers are identified by a 2-bit code,
+`00`= t, `01`= x, `10`= y, `11`= z.
+Every 8-bit value can be interpreted
+as a valid instruction.
 
 `00xx_rrss` (xx = opcode, rr = target register, ss = source register)
 
