@@ -46,10 +46,17 @@ function single_step() {
     let s = (instr & 0x03);
     switch (instr & 0xF0) {
         case 0x00: {  // cp
+            reg(r).value = reg(s).value;
         }
         case 0x10: {  // nor
+            const v = hex2num(reg(r).value);
+            const w = hex2num(reg(s).value);
+            reg(r).value = num2hex(~(v | w));
         }
         case 0x20: {  // sub
+            const v = hex2num(reg(r).value);
+            const w = hex2num(reg(s).value);
+            reg(r).value = num2hex(v - w);
         }
         case 0x30: {  // rol, lsl, lsr, asr
         }
@@ -62,7 +69,7 @@ function single_step() {
         case 0x70: {  // jsr
         }
         default: {  // lo, hi
-            r = (instr & 0x30) >> 8;
+            r = (instr & 0x30) >> 4;
             const d = (instr & 0x0F);
             const el = reg(r);
             if (instr & 0xC0 === 0x80) {  // lo
