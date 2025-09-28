@@ -10,7 +10,26 @@ const $reg_z = document.getElementById("reg_z");
 
 const $single_step = document.getElementById("single_step");
 
+// convert number to hexadecimal string
+function num2hex(num) {
+    return (num & 0xFF).toString(16).toUpperCase().padStart(2, "0");
+}
+
+// convert hexadecimal string to number
+function hex2num(hex) {
+    return parseInt(hex, 16) & 0xFF;
+}
+
+// locate DOM element representing memory cell
+function mem(addr) {
+    const id = "mem" + num2hex(addr);
+    return document.getElementById(id);
+}
+
+// execute the instruction @ip
 function single_step() {
-    alert("execute instruction " + $reg_ip.value);
+    const ip = hex2num($reg_ip.value);
+    const instr = hex2num(mem(ip).value);
+    alert("execute instruction @" + num2hex(ip) + " → " + num2hex(instr));
 }
 $single_step.onclick = single_step;
