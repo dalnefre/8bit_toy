@@ -399,7 +399,7 @@ input {
           <button id="asm_btn">Assemble</button>
         </td>
         <td>
-          <ul style="list-style-type: none;">
+          <ul style="padding-left: 0; width: 4em; list-style-type: none;">
             <li><code>lo <var>r</var>,<var>d</var></code></li>
             <li><code>hi <var>r</var>,<var>d</var></code></li>
             <li><code>rol <var>r</var></code></li>
@@ -416,20 +416,20 @@ input {
           </ul>
         </td>
         <td>
-          <ul style="list-style-type: none;">
+          <ul style="padding-left: 0; list-style-type: none;">
             <li>set low nybble of register <var>r</var> to <var>d</var></li>
             <li>set high nybble of register <var>r</var> to <var>d</var></li>
-            <li>rotate left register <var>r</var> <code>{r[6:0],r[7]}</code></li>
-            <li>logical shift left register <var>r</var> <code>{r[6:0],0}</code></li>
-            <li>logical shift right register <var>r</var> <code>{0,r[7:1]}</code></li>
-            <li>arithmetic shift right register <var>r</var> <code>{r[7],r[7:1]}</code></li>
-            <li>copy register <var>s</var> to register <var>r</var> <code>(s → r)</code></li>
-            <li>bitwise not-or register <var>s</var> to register <var>r</var> <code>(~(r | s) → r)</code></li>
-            <li>subtract register <var>s</var> from register <var>r</var> <code>((r - s) → r)</code></li>
-            <li>load memory from address in register <var>s</var> into register <var>r</var> <code>(@s → r)</code></li>
-            <li>store register <var>s</var> into memory at address in register <var>r</var> <code>(s → @r)</code></li>
-            <li>if register <var>r</var> is not zero, jump to address in register <var>s</var></li>
-            <li>jump to address in register <var>s</var>, saving return address in register <var>r</var></li>
+            <li>rotate left <var>r</var> <code>{r[6:0],r[7]} → r</code></li>
+            <li>logical shift left <var>r</var> <code>{r[6:0],0} → r</code></li>
+            <li>logical shift right <var>r</var> <code>{0,r[7:1]} → r</code></li>
+            <li>arithmetic shift right register <var>r</var> <code>{r[7],r[7:1]} → r</code></li>
+            <li>copy <var>s</var> to <var>r</var> <code>(s → r)</code></li>
+            <li>bitwise not-or <var>s</var> to <var>r</var> <code>(~(r | s) → r)</code></li>
+            <li>subtract <var>s</var> from <var>r</var> <code>((r - s) → r)</code></li>
+            <li>load memory from address <var>s</var> into <var>r</var> <code>(@s → r)</code></li>
+            <li>store <var>s</var> into memory at address <var>r</var> <code>(s → @r)</code></li>
+            <li>if <var>r</var> is not zero, jump to address <var>s</var></li>
+            <li>jump to address <var>s</var>, saving return address in <var>r</var></li>
           </ul>
         </td>
       </tr>
