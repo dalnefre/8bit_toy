@@ -1,13 +1,32 @@
 # 8bit_toy
 
-Learning simulator for a toy 8-bit CPU
-
-## Overview
+A learning simulator for a toy 8-bit CPU featuring:
 
   * 8-bit data
   * 8-bit addresses
   * 8-bit instructions
   * 4 registers (`00`= t, `01`= x, `10`= y, `11`= z )
+
+The current version of the simulator is hosted at
+[https://dalnefre.github.io/8bit_toy/](https://dalnefre.github.io/8bit_toy/)
+
+## Operation
+
+The simulator runs entirely within a web page,
+controlled by a simple HTML GUI.
+256 bytes of memory hold both the program
+and the data used by the program.
+All memory locations and machine registers
+can be directly modified by the GUI.
+Data is expressed in hexadecimal (`0123456789ABCDEF`).
+Two hex digits represent one 8-bit byte.
+Programs may be written in
+a simple assembly-language,
+which compiles into machine-code
+starting at location `00` in memory.
+The _Step_ button executes the instruction
+at the address held by instruction pointer (`ip`)
+and updates the machine state accordingly.
 
 ## Opcodes
 
