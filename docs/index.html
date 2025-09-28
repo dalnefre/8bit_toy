@@ -380,18 +380,60 @@ input {
         <td style="width: 4em;">&nbsp;</td>
         <td>
           <div id="controls">
-            <button id="play-pause">Play</button>
-            <input type="range" id="play-interval" min="0" max="1000" value="0"
+            <button id="play_pause">Play</button>
+            <input type="range" id="play_interval" min="0" max="1000" value="0"
               style="position: relative; height: .6em;">
-            <button id="single-step">Step</button>
+            <button id="single_step">Step</button>
           </div>
         </td>
       </tr>
     </table>
   </div>
-  <div id="footer">
-    <button id="snapshot-btn">Snapshot</button>
-    <input id="restore-btn" type="file">
+  <div id="program">
+    <h2>Program</h2>
+    <table>
+      <tr>
+        <td>
+          <textarea id="assembly" rows="25" cols="16" overflow="scroll"
+            autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
+          <button id="asm_btn">Assemble</button>
+        </td>
+        <td>
+          <ul>
+            <li><code>lo <var>r</var>,<var>d</var></code></li>
+            <li><code>hi <var>r</var>,<var>d</var></code></li>
+            <li><code>rol <var>r</var></code></li>
+            <li><code>lsl <var>r</var></code></li>
+            <li><code>lsr <var>r</var></code></li>
+            <li><code>asr <var>r</var></code></li>
+            <li><code>cp <var>r</var>,<var>s</var></code></li>
+            <li><code>nor <var>r</var>,<var>s</var></code></li>
+            <li><code>sub <var>r</var>,<var>s</var></code></li>
+            <li><code>ld <var>r</var>,<var>s</var></code></li>
+            <li><code>st <var>r</var>,<var>s</var></code></li>
+            <li><code>jnz <var>r</var>,<var>s</var></code></li>
+            <li><code>jsr <var>r</var>,<var>s</var></code></li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li><code>lo <var>r</var>,<var>d</var></code></li>
+            <li><code>hi <var>r</var>,<var>d</var></code></li>
+            <li><code>rol <var>r</var></code></li>
+            <li><code>lsl <var>r</var></code></li>
+            <li><code>lsr <var>r</var></code></li>
+            <li><code>asr <var>r</var></code></li>
+            <li><code>cp <var>r</var>,<var>s</var></code></li>
+            <li><code>nor <var>r</var>,<var>s</var></code></li>
+            <li><code>sub <var>r</var>,<var>s</var></code></li>
+            <li><code>ld <var>r</var>,<var>s</var></code></li>
+            <li><code>st <var>r</var>,<var>s</var></code></li>
+            <li><code>jnz <var>r</var>,<var>s</var></code></li>
+            <li><code>jsr <var>r</var>,<var>s</var></code></li>
+          </ul>
+        </td>
+      </tr>
+    </table>
   </div>
   <!--
   <script type="module" src="./index.js"></script>
