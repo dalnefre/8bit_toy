@@ -396,10 +396,12 @@ input {
         <td>
           <textarea id="assembly" rows="25" cols="16" overflow="scroll"
             autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
-          <button id="asm_btn">Assemble</button>
+          <div>
+            <button id="asm_btn">Assemble</button>
+          </div>
         </td>
         <td>
-          <ul style="padding-left: 0; width: 4em; list-style-type: none;">
+          <ul style="padding-left: 1ex; width: 4em; list-style-type: none;">
             <li><code>lo <var>r</var>,<var>d</var></code></li>
             <li><code>hi <var>r</var>,<var>d</var></code></li>
             <li><code>rol <var>r</var></code></li>
@@ -416,13 +418,13 @@ input {
           </ul>
         </td>
         <td>
-          <ul style="padding-left: 0; list-style-type: none;">
+          <ul style="padding-left: 1ex; list-style-type: none;">
             <li>set low nybble of register <var>r</var> to <var>d</var></li>
             <li>set high nybble of register <var>r</var> to <var>d</var></li>
             <li>rotate left <var>r</var> <code>{r[6:0],r[7]} → r</code></li>
             <li>logical shift left <var>r</var> <code>{r[6:0],0} → r</code></li>
             <li>logical shift right <var>r</var> <code>{0,r[7:1]} → r</code></li>
-            <li>arithmetic shift right register <var>r</var> <code>{r[7],r[7:1]} → r</code></li>
+            <li>arithmetic shift right <var>r</var> <code>{r[7],r[7:1]} → r</code></li>
             <li>copy <var>s</var> to <var>r</var> <code>(s → r)</code></li>
             <li>bitwise not-or <var>s</var> to <var>r</var> <code>(~(r | s) → r)</code></li>
             <li>subtract <var>s</var> from <var>r</var> <code>((r - s) → r)</code></li>
