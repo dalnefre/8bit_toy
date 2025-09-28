@@ -61,18 +61,29 @@ function single_step() {
             break;
         }
         case 0x30: {  // rol, lsl, lsr, asr
+            // TBD...
             break;
         }
         case 0x40: {  // ld
+            const a = hex2num(reg(s).value);
+            reg(r).value = mem(a).value;
             break;
         }
         case 0x50: {  // st
+            const a = hex2num(reg(r).value);
+            mem(a).value = reg(s).value;
             break;
         }
         case 0x60: {  // jnz
+            const b = hex2num(reg(r).value);
+            if (b) {
+                $reg_ip.value = reg(s).value;  // jump
+            }
             break;
         }
         case 0x70: {  // jsr
+            reg(r).value = $reg_ip.value;
+            $reg_ip.value = reg(s).value;  // jump
             break;
         }
         default: {  // lo, hi
