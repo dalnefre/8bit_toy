@@ -61,7 +61,30 @@ function single_step() {
             break;
         }
         case 0x30: {  // rol, lsl, lsr, asr
-            // TBD...
+            let v = hex2num(reg(r).value);
+            switch (instr & 0x03) {
+                case 0x00: {  // rol
+                    v = (
+                        v & 0x80
+                        ? (v << 1) | 1
+                        : v << 1
+                    );
+                    break;
+                }
+                case 0x01: {  // lsl
+                    v = v << 1;
+                    break;
+                }
+                case 0x02: {  // lsr
+                    v = v >>> 1;
+                    break;
+                }
+                case 0x03: {  // asr
+                    v = v >> 1;
+                    break;
+                }
+            }
+            reg(r).value = num2hex(v);
             break;
         }
         case 0x40: {  // ld
