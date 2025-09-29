@@ -80,7 +80,11 @@ function single_step() {
                     break;
                 }
                 case 0x03: {  // asr
-                    v = v >> 1;
+                    v = (
+                        v & 0x80
+                        ? (v >>> 1) | 0x80
+                        : v >>> 1
+                    );
                     break;
                 }
             }
