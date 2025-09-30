@@ -2,6 +2,8 @@
 
 /*jslint browser, bitwise, long */
 
+const asm_re = /^(\w\w:\w\w\s)?\s*(\w+)\s+([txyz])(,\s*(\w))?\s*$/u;
+
 const $reg_ip = document.getElementById("reg_ip");
 const $reg_t = document.getElementById("reg_t");
 const $reg_x = document.getElementById("reg_x");
@@ -127,3 +129,63 @@ function single_step() {
     }
 }
 $single_step.onclick = single_step;
+
+const reg_id = {"t":0, "x":1, "y":2, "z":3};
+const op_id = {
+    "cp": 0x00,
+    "nor": 0x10,
+    "sub": 0x20,
+    "rol": 0x30,
+    "lsl": 0x31,
+    "lsr": 0x32,
+    "asr": 0x33,
+    "ld": 0x40,
+    "st": 0x50,
+    "jnz": 0x60,
+    "jsr": 0x70,
+    "lo": 0x80,
+    "hi": 0xC0
+}
+
+// assemble one instruction, returning an 8-bit number
+function assemble(line) {
+    const result = asm_re.exec(line);
+    if (result) {
+        const op = result[2];
+        const r = reg_id[result[3]] ?? 0;
+        const d = result[5];
+        const s = reg_id[d] ?? 0;
+        if ((op === "cp") || (op === "nor") || (op === "sub")) {
+            return op_id[op] | (r << 2) | s;
+        } else if ((op === "rol") || (op === "lsl") || (op === "lsr") || (op === "asr")) {
+            return op_id[op] | (r << 2);
+        } else if ((op === "ld") || (op === "st") || (op === "jnz") || (op === "jsr")) {
+            return op_id[op] | (r << 2) | s;
+        } else if ((op === "lo") || (op === "hi")) {
+            return op_id[op] | (r << 4) | (hex2num(d) & 0xF);
+        }
+    }
+}
+
+const id_reg = ["t", "x", "y", "z"];
+const id_op = ["cp", "nor", "sub", "sr", "ld", "st", "jnz", "jsr"];
+const id_sr = ["rol", "lsl", "lsr", "asr"];
+
+// disassemble one instruction, returning a string
+function disassemble(instr) {
+    if (instr & 0x80) {
+        const r = (instr & 0x30) >> 2;
+        const d = (instr & 0x0F);
+        const op = (instr & 0x40) ? "hi" : "lo";
+        return op + " " + id_reg[r] + "," + num2hex(d)[1];
+    } else if ((instr & 0xF0) === 0x30) {
+        const r = (instr & 0x0C) >> 2;
+        const op = id_sr[instr & 0x03];
+        return op + " " + id_reg[r];
+    } else {
+        const r = (instr & 0x0C) >> 2;
+        const s = (instr & 0x03);
+        const op = id_op[(instr & 0x70) >> 4];
+        return op + " " + id_reg[r] + "," + id_reg[s];
+    }
+}
