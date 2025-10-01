@@ -2,8 +2,6 @@
 
 /*jslint browser, bitwise, long */
 
-const asm_re = /^(\w\w:\w\w\s)?\s*(\w+)\s+([txyz])(,\s*(\w))?\s*$/u;
-
 const $reg_ip = document.getElementById("reg_ip");
 const $reg_t = document.getElementById("reg_t");
 const $reg_x = document.getElementById("reg_x");
@@ -132,6 +130,7 @@ function single_step() {
 }
 $single_step.onclick = single_step;
 
+const asm_re = /^(\w\w:\w\w\s)?\s*(\w+)\s+([txyz])(,\s*(\w))?\s*$/u;
 const reg_id = {"t":0, "x":1, "y":2, "z":3};
 const op_id = {
     "cp": 0x00,
@@ -194,15 +193,16 @@ function disassemble(instr) {
 
 // compile assembly script, returning normalized script
 function compile(script) {
-    function xform(line, index) {
-        if (line.length === 0) {
-            return line;
+    let a = 0;
+    function xform(line) {
+        if (line.length > 0) {
+            const instr = assemble(line);
+            const b = num2hex(instr);
+            mem(a).value = b;
+            line = num2hex(a) + ':' + b + " " + disassemble(instr);
+            a = (a + 1) & 0xFF;
         }
-        const instr = assemble(line);
-        const a = index & 0xFF;
-        const b = num2hex(instr);
-        mem(a).value = b;
-        return num2hex(a) + ':' + b + " " + disassemble(instr);
+        return line;
     }
     return script.split("\n").map(xform).join("\n");
 }
