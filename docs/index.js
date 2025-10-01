@@ -195,8 +195,8 @@ function disassemble(instr) {
 // compile assembly script, returning normalized script
 function compile(script) {
     function xform(line, index) {
-        if (s.length === 0) {
-            return s;
+        if (line.length === 0) {
+            return line;
         }
         const instr = assemble(line);
         return num2hex(index) + ':' + num2hex(instr) + " " + disassemble(instr);
