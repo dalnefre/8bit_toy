@@ -175,7 +175,7 @@ const id_sr = ["rol", "lsl", "lsr", "asr"];
 // disassemble one instruction, returning a string
 function disassemble(instr) {
     if (instr & 0x80) {
-        const r = (instr & 0x30) >> 2;
+        const r = (instr & 0x30) >> 4;
         const d = (instr & 0x0F);
         const op = (instr & 0x40) ? "hi" : "lo";
         return op + " " + id_reg[r] + "," + num2hex(d)[1];
