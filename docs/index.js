@@ -11,6 +11,8 @@ const $reg_y = document.getElementById("reg_y");
 const $reg_z = document.getElementById("reg_z");
 
 const $single_step = document.getElementById("single_step");
+const $asm_btn = document.getElementById("asm_btn");
+const $assembly = document.getElementById("assembly");
 
 // convert number to hexadecimal string
 function num2hex(num) {
@@ -188,4 +190,20 @@ function disassemble(instr) {
         const op = id_op[(instr & 0x70) >> 4];
         return op + " " + id_reg[r] + "," + id_reg[s];
     }
+}
+
+// compile assembly script, returning normalized script
+function compile(script) {
+    function xform(line, index) {
+        if (s.length === 0) {
+            return s;
+        }
+        const instr = assemble(line);
+        return num2hex(index) + ':' + num2hex(instr) + " " + disassemble(instr);
+    }
+    return script.split("\n").map(xform).join("\n");
+}
+$asm_btn.onclick = function (evt) {
+    const script = compile($assembly.value);
+    $assembly.value = script;
 }
