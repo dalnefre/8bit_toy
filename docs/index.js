@@ -199,7 +199,10 @@ function compile(script) {
             return line;
         }
         const instr = assemble(line);
-        return num2hex(index) + ':' + num2hex(instr) + " " + disassemble(instr);
+        const a = index & 0xFF;
+        const b = num2hex(instr);
+        mem(a).value = b;
+        return num2hex(a) + ':' + b + " " + disassemble(instr);
     }
     return script.split("\n").map(xform).join("\n");
 }
