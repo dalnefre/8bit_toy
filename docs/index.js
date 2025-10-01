@@ -195,7 +195,7 @@ function disassemble(instr) {
 function compile(script) {
     let a = 0;
     function xform(line) {
-        if (line.length > 0) {
+        if ((line.length > 0) && (line[0] != ";")) {
             const instr = assemble(line);
             const b = num2hex(instr);
             mem(a).value = b;
