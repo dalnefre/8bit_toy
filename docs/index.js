@@ -197,10 +197,14 @@ function compile(script) {
     function xform(line) {
         if ((line.length > 0) && (line[0] != ";")) {
             const instr = assemble(line);
-            const b = num2hex(instr);
-            mem(a).value = b;
-            line = num2hex(a) + ':' + b + " " + disassemble(instr);
-            a = (a + 1) & 0xFF;
+            if (Number.isSafeInteger(instr)) {
+                const b = num2hex(instr);
+                mem(a).value = b;
+                line = num2hex(a) + ':' + b + " " + disassemble(instr);
+                a = (a + 1) & 0xFF;
+            } else {
+                line = ";ERROR " + line;
+            }
         }
         return line;
     }
