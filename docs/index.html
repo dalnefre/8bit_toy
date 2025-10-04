@@ -398,7 +398,49 @@ input {
       <tr>
         <td>
           <textarea id="assembly" rows="16" cols="14" overflow="scroll"
-            autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
+            autocapitalize="off" autocomplete="off" autocorrect="off">; Fibonacci
+
+; 0 → f(0)
+; 1 → f(1)
+hi x,0
+lo x,1
+cp t,x
+hi t,F
+st t,x
+
+; 1 → z
+hi z,0
+lo z,1
+
+; f(n) → x
+; f(n-1) → y
+cp y,t
+sub y,z
+ld y,y
+
+; -y → z
+lo z,0
+sub z,y
+
+; x+y → f(n+1)
+sub x,z
+
+; -1 → z
+hi z,F
+lo z,F
+
+; t+1 → t
+sub t,z
+
+; 4 → z
+hi z,0
+lo z,4
+
+jnz t,z
+
+hi z,1
+jnz z,z
+</textarea>
         </td>
         <td>
           <ul style="padding-left: 1ex; width: 4em; list-style-type: none;">
